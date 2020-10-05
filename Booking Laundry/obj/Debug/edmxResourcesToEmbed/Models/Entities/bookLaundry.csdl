@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="onlinelaundryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="onlinelaundryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bills" EntityType="onlinelaundryModel.Bill" />
+    <EntitySet Name="Customers" EntityType="onlinelaundryModel.Customer" />
+    <EntitySet Name="Deliveries" EntityType="onlinelaundryModel.Delivery" />
+    <EntitySet Name="LaundryTypes" EntityType="onlinelaundryModel.LaundryType" />
+    <EntitySet Name="Orders" EntityType="onlinelaundryModel.Order" />
+    <EntitySet Name="sysdiagrams" EntityType="onlinelaundryModel.sysdiagram" />
+    <AssociationSet Name="FK_Orders_Customer" Association="onlinelaundryModel.FK_Orders_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Delivery" Association="onlinelaundryModel.FK_Orders_Delivery">
+      <End Role="Delivery" EntitySet="Deliveries" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_LaundryType" Association="onlinelaundryModel.FK_Orders_LaundryType">
+      <End Role="LaundryType" EntitySet="LaundryTypes" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dateCreate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="totalExpenses" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="phoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="onlinelaundryModel.FK_Orders_Customer" FromRole="Customer" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Delivery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="onlinelaundryModel.FK_Orders_Delivery" FromRole="Delivery" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="LaundryType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="laundryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="init" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="onlinelaundryModel.FK_Orders_LaundryType" FromRole="LaundryType" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customerId" Type="Int32" />
+    <Property Name="laundryTypeId" Type="Int32" />
+    <Property Name="amountUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="orderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="totalPayment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idDelivery" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="onlinelaundryModel.FK_Orders_Customer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Delivery" Relationship="onlinelaundryModel.FK_Orders_Delivery" FromRole="Order" ToRole="Delivery" />
+    <NavigationProperty Name="LaundryType" Relationship="onlinelaundryModel.FK_Orders_LaundryType" FromRole="Order" ToRole="LaundryType" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Orders_Customer">
+    <End Type="onlinelaundryModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="onlinelaundryModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Delivery">
+    <End Type="onlinelaundryModel.Delivery" Role="Delivery" Multiplicity="0..1" />
+    <End Type="onlinelaundryModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delivery">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="idDelivery" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_LaundryType">
+    <End Type="onlinelaundryModel.LaundryType" Role="LaundryType" Multiplicity="0..1" />
+    <End Type="onlinelaundryModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LaundryType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="laundryTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

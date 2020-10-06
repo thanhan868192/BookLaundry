@@ -3,7 +3,7 @@
   <EntityContainerMapping StorageEntityContainer="onlinelaundryModelStoreContainer" CdmEntityContainer="onlinelaundryEntities">
     <EntitySetMapping Name="Bills">
       <EntityTypeMapping TypeName="onlinelaundryModel.Bill">
-        <MappingFragment StoreEntitySet="Bills">
+        <MappingFragment StoreEntitySet="Bill">
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="totalExpenses" ColumnName="totalExpenses" />
           <ScalarProperty Name="dateCreate" ColumnName="dateCreate" />
@@ -40,20 +40,18 @@
           <ScalarProperty Name="init" ColumnName="init" />
           <ScalarProperty Name="price" ColumnName="price" />
           <ScalarProperty Name="laundryName" ColumnName="laundryName" />
-          <ScalarProperty Name="idCode" ColumnName="idCode" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="onlinelaundryModel.Order">
-        <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="idDelivery" ColumnName="idDelivery" />
+        <MappingFragment StoreEntitySet="Order">
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="totalPayment" ColumnName="totalPayment" />
           <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="orderType" ColumnName="orderType" />
           <ScalarProperty Name="amountUnit" ColumnName="amountUnit" />
+          <ScalarProperty Name="idDelivery" ColumnName="idDelivery" />
           <ScalarProperty Name="laundryTypeId" ColumnName="laundryTypeId" />
           <ScalarProperty Name="customerId" ColumnName="customerId" />
           <ScalarProperty Name="idCode" ColumnName="idCode" />

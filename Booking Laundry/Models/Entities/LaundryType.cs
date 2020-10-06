@@ -21,7 +21,6 @@ namespace Booking_Laundry.Models.Entities
         }
     
         public int id { get; set; }
-        public string idCode { get; set; }
         public string laundryName { get; set; }
         public string price { get; set; }
         public string init { get; set; }

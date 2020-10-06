@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="onlinelaundryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Bills">
+        <EntityType Name="Bill">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -39,13 +39,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idCode" Type="nvarchar" MaxLength="50" />
           <Property Name="laundryName" Type="nvarchar" MaxLength="250" />
           <Property Name="price" Type="nvarchar" MaxLength="50" />
           <Property Name="init" Type="nvarchar" MaxLength="50" />
           <Property Name="status" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Orders">
+        <EntityType Name="Order">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -53,12 +52,11 @@
           <Property Name="idCode" Type="nvarchar" MaxLength="50" />
           <Property Name="customerId" Type="int" />
           <Property Name="laundryTypeId" Type="int" />
+          <Property Name="idDelivery" Type="int" />
           <Property Name="amountUnit" Type="nvarchar" MaxLength="50" />
-          <Property Name="orderType" Type="nvarchar" MaxLength="50" />
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="totalPayment" Type="nvarchar" MaxLength="50" />
           <Property Name="status" Type="nvarchar" MaxLength="50" />
-          <Property Name="idDelivery" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -72,58 +70,58 @@
         </EntityType>
         <Association Name="FK_Orders_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Orders">
+            <Dependent Role="Order">
               <PropertyRef Name="customerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_Delivery">
           <End Role="Delivery" Type="Self.Delivery" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Delivery">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Orders">
+            <Dependent Role="Order">
               <PropertyRef Name="idDelivery" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_LaundryType">
           <End Role="LaundryType" Type="Self.LaundryType" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LaundryType">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Orders">
+            <Dependent Role="Order">
               <PropertyRef Name="laundryTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="onlinelaundryModelStoreContainer">
-          <EntitySet Name="Bills" EntityType="Self.Bills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LaundryType" EntityType="Self.LaundryType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Orders_Customer" Association="Self.FK_Orders_Customer">
             <End Role="Customer" EntitySet="Customer" />
-            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Delivery" Association="Self.FK_Orders_Delivery">
             <End Role="Delivery" EntitySet="Delivery" />
-            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_LaundryType" Association="Self.FK_Orders_LaundryType">
             <End Role="LaundryType" EntitySet="LaundryType" />
-            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -186,7 +184,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="laundryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="init" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -201,12 +198,11 @@
           <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="customerId" Type="Int32" />
           <Property Name="laundryTypeId" Type="Int32" />
+          <Property Name="idDelivery" Type="Int32" />
           <Property Name="amountUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="orderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="totalPayment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="idDelivery" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="onlinelaundryModel.FK_Orders_Customer" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="Delivery" Relationship="onlinelaundryModel.FK_Orders_Delivery" FromRole="Order" ToRole="Delivery" />
           <NavigationProperty Name="LaundryType" Relationship="onlinelaundryModel.FK_Orders_LaundryType" FromRole="Order" ToRole="LaundryType" />
@@ -257,7 +253,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -265,7 +261,7 @@
         <EntityContainerMapping StorageEntityContainer="onlinelaundryModelStoreContainer" CdmEntityContainer="onlinelaundryEntities">
           <EntitySetMapping Name="Bills">
             <EntityTypeMapping TypeName="onlinelaundryModel.Bill">
-              <MappingFragment StoreEntitySet="Bills">
+              <MappingFragment StoreEntitySet="Bill">
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="totalExpenses" ColumnName="totalExpenses" />
                 <ScalarProperty Name="dateCreate" ColumnName="dateCreate" />
@@ -302,20 +298,18 @@
                 <ScalarProperty Name="init" ColumnName="init" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="laundryName" ColumnName="laundryName" />
-                <ScalarProperty Name="idCode" ColumnName="idCode" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="onlinelaundryModel.Order">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="idDelivery" ColumnName="idDelivery" />
+              <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="totalPayment" ColumnName="totalPayment" />
                 <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="orderType" ColumnName="orderType" />
                 <ScalarProperty Name="amountUnit" ColumnName="amountUnit" />
+                <ScalarProperty Name="idDelivery" ColumnName="idDelivery" />
                 <ScalarProperty Name="laundryTypeId" ColumnName="laundryTypeId" />
                 <ScalarProperty Name="customerId" ColumnName="customerId" />
                 <ScalarProperty Name="idCode" ColumnName="idCode" />

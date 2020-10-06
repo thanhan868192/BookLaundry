@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="01810dabd544473b8ebcea3b6d0cf13c" Name="Diagram1">
-        <EntityTypeShape EntityType="onlinelaundryModel.Bill" Width="1.5" PointX="7.375" PointY="0.5" />
-        <EntityTypeShape EntityType="onlinelaundryModel.Customer" Width="1.5" PointX="2.25" PointY="0.875" />
-        <EntityTypeShape EntityType="onlinelaundryModel.Delivery" Width="1.5" PointX="1.5" PointY="4.25" />
-        <EntityTypeShape EntityType="onlinelaundryModel.LaundryType" Width="1.5" PointX="7.125" PointY="4.5" />
-        <EntityTypeShape EntityType="onlinelaundryModel.Order" Width="1.5" PointX="4.625" PointY="0.75" />
-        <EntityTypeShape EntityType="onlinelaundryModel.sysdiagram" Width="1.5" PointX="4.375" PointY="5.5" />
+        <EntityTypeShape EntityType="onlinelaundryModel.Bill" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="onlinelaundryModel.Customer" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="onlinelaundryModel.Delivery" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="onlinelaundryModel.LaundryType" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="onlinelaundryModel.Order" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="onlinelaundryModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" />
         <AssociationConnector Association="onlinelaundryModel.FK_Orders_Customer" />
         <AssociationConnector Association="onlinelaundryModel.FK_Orders_Delivery" />
         <AssociationConnector Association="onlinelaundryModel.FK_Orders_LaundryType" />

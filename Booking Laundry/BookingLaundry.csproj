@@ -134,6 +134,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Bus\BillBus.cs" />
+    <Compile Include="Models\Bus\CustomerBus.cs" />
+    <Compile Include="Models\Bus\DeliveryBus.cs" />
+    <Compile Include="Models\Bus\LaundryTypeBus.cs" />
+    <Compile Include="Models\Bus\OrderBus.cs" />
+    <Compile Include="Models\Dao\BillDao.cs" />
+    <Compile Include="Models\Dao\CustomerDao.cs" />
+    <Compile Include="Models\Dao\DeliveryDao.cs" />
+    <Compile Include="Models\Dao\LaundryTypeDao.cs" />
+    <Compile Include="Models\Dao\OrderDao.cs" />
+    <Compile Include="Models\Dto\BillDto.cs" />
+    <Compile Include="Models\Dto\CustomerDto.cs" />
+    <Compile Include="Models\Dto\DeliveryDto.cs" />
+    <Compile Include="Models\Dto\LaundryTypeDto.cs" />
+    <Compile Include="Models\Dto\OrderDto.cs" />
     <Compile Include="Models\Entities\Bill.cs">
       <DependentUpon>bookLaundry.tt</DependentUpon>
     </Compile>
@@ -168,9 +183,56 @@
       <DependentUpon>bookLaundry.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Repositories.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\Booking Laundry.dll" />
+    <Content Include="bin\Booking Laundry.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\admin\css\basictable.css" />
     <Content Include="Content\admin\css\bootstrap.css" />
     <Content Include="Content\admin\css\circles.css" />
@@ -327,6 +389,19 @@
     <Content Include="Content\client\webfonts\bootstrap.css.map" />
     <Content Include="Content\client\webfonts\bootstrap-theme.min.css.map" />
     <Content Include="Content\client\webfonts\bootstrap-theme.css.map" />
+    <Content Include="bin\Booking Laundry.dll.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="Areas\Admin\Views\Admin\LaundryType.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ViewCreateLaundry.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Detail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -354,10 +429,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\NewFolder1\" />
-    <Folder Include="Models\Bus\" />
-    <Folder Include="Models\Dao\" />
-    <Folder Include="Models\Dto\" />
+    <Folder Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

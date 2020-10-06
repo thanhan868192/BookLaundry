@@ -56,7 +56,6 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="laundryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="init" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -71,12 +70,11 @@
     <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="customerId" Type="Int32" />
     <Property Name="laundryTypeId" Type="Int32" />
+    <Property Name="idDelivery" Type="Int32" />
     <Property Name="amountUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="orderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="totalPayment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="idDelivery" Type="Int32" />
     <NavigationProperty Name="Customer" Relationship="onlinelaundryModel.FK_Orders_Customer" FromRole="Order" ToRole="Customer" />
     <NavigationProperty Name="Delivery" Relationship="onlinelaundryModel.FK_Orders_Delivery" FromRole="Order" ToRole="Delivery" />
     <NavigationProperty Name="LaundryType" Relationship="onlinelaundryModel.FK_Orders_LaundryType" FromRole="Order" ToRole="LaundryType" />

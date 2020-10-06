@@ -18,12 +18,11 @@ namespace Booking_Laundry.Models.Entities
         public string idCode { get; set; }
         public Nullable<int> customerId { get; set; }
         public Nullable<int> laundryTypeId { get; set; }
+        public Nullable<int> idDelivery { get; set; }
         public string amountUnit { get; set; }
-        public string orderType { get; set; }
         public string description { get; set; }
         public string totalPayment { get; set; }
         public string status { get; set; }
-        public Nullable<int> idDelivery { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Delivery Delivery { get; set; }

@@ -1,7 +1,8 @@
-﻿
+﻿@using Booking_Laundry.Models.Dto 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    List<LaundryTypeDto> listLaundry = ViewBag.ListLaundry;
 }
 
 <section class="banner" id="home">
@@ -55,10 +56,18 @@
             <div class="col-lg-2 col-sm-6 col-12 py-5 px-4 servicetext">
                 <h4>Classic Hair cut</h4>
                 <p class="my-3">Nam sed ullamcorper elit, sit amet libero in imperdiet dolor. Maecenas non commodo libero.</p>
+                @*@foreach (var item in listLaundry)
+                {
+                    <a class="bt text-capitalize" href="#" role="button">
+                        @item.laundryName
+                        <i class="fas fa-cut"></i>
+                    </a>
+                }*@
                 <a class="bt text-capitalize" href="#" role="button">
                     read more
                     <i class="fas fa-cut"></i>
                 </a>
+
             </div>
             <div class="col-lg-2 col-sm-6 col-12 serviceimage2">
 

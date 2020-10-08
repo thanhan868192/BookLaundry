@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Booking_Laundry.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,7 @@ namespace Booking_Laundry.Controllers
         }
         public ActionResult Client()
         {
+            ViewBag.ListLaundry = new Repositories().GetLaundryTypes();
             return View();
         }
 

@@ -12,7 +12,6 @@ namespace Booking_Laundry.Models.Dto
         public int? customerId { get; set; }
         public int? laundryTypeId { get; set; }
         public string amountUnit { get; set; }
-        public string orderType { get; set; }
         public string description { get; set; }
         public string totalPayment { get; set; }
         public string status { get; set; }

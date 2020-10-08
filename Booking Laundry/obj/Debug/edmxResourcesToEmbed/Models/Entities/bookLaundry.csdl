@@ -36,6 +36,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="fullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="phoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />

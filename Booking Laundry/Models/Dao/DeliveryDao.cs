@@ -49,8 +49,8 @@ namespace Booking_Laundry.Models.Dao
 
         public bool DeleteDeli(int id)
         {
-            var data = db.LaundryTypes.SingleOrDefault(s => s.id == id);
-            db.LaundryTypes.Remove(data);
+            var data = db.Deliveries.SingleOrDefault(s => s.id == id);
+            db.Deliveries.Remove(data);
             if (db.SaveChanges() > 0)
             {
                 return true;

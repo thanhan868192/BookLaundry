@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Booking_Laundry.Models.Dto.OrderDto>
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Order</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ViewCreateOrder")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.laundryTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idDelivery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amountUnit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPayment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idCode)
+    </td>
+    <td>
+            @Html.DisplayFor(modelItem => item.CustomerDto.fullName)
+        </td>
+    <td>
+            @Html.DisplayFor(modelItem => item.LaundryTypeDto.laundryName)
+        </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DeliveryDto.name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.amountUnit)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.totalPayment)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.status)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditOrder", new { id = item.id }) |
+        @Html.ActionLink("Details", "DetailOrder", new { id = item.id }) |
+        @Html.ActionLink("Delete", "DeleteOrder", new { id = item.id })
+    </td>
+</tr>
+}
+
+</table>

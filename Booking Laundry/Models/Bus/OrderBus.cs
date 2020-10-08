@@ -12,7 +12,7 @@ namespace Booking_Laundry.Models.Bus
     {
         public IEnumerable<OrderDto> GetOrders()
         {
-            var data = new OrderDao().GetOrders().Select(s => new OrderDto
+            var data = new OrderDao().GetOrders().OrderByDescending(d=>d.id).Select(s => new OrderDto
             {
                 id = s.id,
                 idCode = s.idCode,
@@ -21,10 +21,26 @@ namespace Booking_Laundry.Models.Bus
                 amountUnit = s.amountUnit,
                 description = s.description,
                 totalPayment = s.totalPayment,
-                status = s.status
+                status = s.status,
+                idDelivery = s.idDelivery,
+                CustomerDto = new CustomerDto
+                {
+                    id = s.Customer.id,
+                    fullName = s.Customer.fullName
+                },
+                LaundryTypeDto = new LaundryTypeDto
+                {
+                    id = s.LaundryType.id,
+                    laundryName = s.LaundryType.laundryName
+                },
+                DeliveryDto = new DeliveryDto 
+                {
+                    id = s.Delivery.id,
+                    name = s.Delivery.name
+                },
             });
             return data;
-        }
+             }
         public OrderDto GetOrderById(int id)
         {
             var s = new OrderDao().GetOrderById(id);
@@ -37,12 +53,23 @@ namespace Booking_Laundry.Models.Bus
                 amountUnit = s.amountUnit,
                 description = s.description,
                 totalPayment = s.totalPayment,
-                status = s.status
+                status = s.status,
+                CustomerDto = new CustomerDto
+                {
+                    id = s.Customer.id,
+                    fullName = s.Customer.fullName
+                },
+                LaundryTypeDto = new LaundryTypeDto
+                {
+                    laundryName = s.LaundryType.laundryName
+                },
             };
         }
 
         public bool CreateOrder(Order order)
         {
+            order.idDelivery = 1;
+            order.status = "inactive";
             if (new OrderDao().CreateOrder(order))
             {
                 return true;

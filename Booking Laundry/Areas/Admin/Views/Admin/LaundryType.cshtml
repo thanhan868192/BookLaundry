@@ -8,7 +8,7 @@
 <h2>LaundryType</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "ViewCreateLaundry")
 </p>
 <table class="table">
     <tr>
@@ -43,8 +43,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Details", "Detail", new { id=item.id }) |
+            @Html.ActionLink("Delete", "DeleteLaundry", new { id=item.id })
         </td>
     </tr>
 }

@@ -12,7 +12,7 @@ namespace Booking_Laundry.Models.Bus
     {
         public IEnumerable<LaundryTypeDto> GetLaundryTypes()
         {
-            var data = new LaundryTypeDao().GetLaundryTypes().Select(s => new LaundryTypeDto
+            var data = new LaundryTypeDao().GetLaundryTypes().OrderByDescending(d=> d.id).Select(s => new LaundryTypeDto
             {
                 id = s.id,
                 laundryName = s.laundryName,

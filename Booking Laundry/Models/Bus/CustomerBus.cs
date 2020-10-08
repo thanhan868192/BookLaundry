@@ -12,7 +12,7 @@ namespace Booking_Laundry.Models.Bus
     {
         public IEnumerable<CustomerDto> GetCustomers()
         {
-            var data = new CustomerDao().GetCustomers().Select(s => new CustomerDto
+            var data = new CustomerDao().GetCustomers().OrderByDescending(d=> d.id).Select(s => new CustomerDto
             {
                 id = s.id,
                 idCode = s.idCode,

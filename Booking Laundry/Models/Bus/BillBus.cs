@@ -12,7 +12,7 @@ namespace Booking_Laundry.Models.Bus
     {
         public IEnumerable<BillDto> GetBills()
         {
-            var data = new BillDao().GetBills().Select(s => new BillDto
+            var data = new BillDao().GetBills().OrderBy(d=>d.dateCreate).Select(s => new BillDto
             {
                 id = s.id,
                 idCode = s.idCode,

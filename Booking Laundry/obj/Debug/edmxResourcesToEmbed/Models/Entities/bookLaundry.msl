@@ -20,6 +20,7 @@
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
           <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="idCard" ColumnName="idCard" />
           <ScalarProperty Name="idCode" ColumnName="idCode" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

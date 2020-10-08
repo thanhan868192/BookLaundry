@@ -1,0 +1,68 @@
+﻿@model Booking_Laundry.Models.Dto.OrderDto
+
+@{
+    ViewBag.Title = "DetailOrder";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Detail Order</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerDto.fullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.laundryTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaundryTypeDto.laundryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amountUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amountUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPayment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPayment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditOrder", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Order")
+</p>

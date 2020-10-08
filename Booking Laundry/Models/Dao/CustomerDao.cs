@@ -40,6 +40,7 @@ namespace Booking_Laundry.Models.Dao
         {
             var data = db.Customers.SingleOrDefault(s => s.id == customer.id);
             data.fullName = customer.fullName;
+            data.idCard = customer.idCard;
             data.phoneNumber = customer.phoneNumber;
             data.address = customer.address;
             data.gender = customer.gender;
